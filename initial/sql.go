@@ -17,13 +17,14 @@ func InitSql() {
 	if nil != err {
 		port = 3306
 	}
+	
 	if beego.AppConfig.String("runmode") == "dev" {
 		orm.Debug = true
 	}
 	orm.RegisterDriver("mysql", orm.DRMySQL)
 	//orm.RegisterDataBase("default", "mysql", "root:@/blog?charset=utf8", 30)
 	orm.RegisterDataBase("default", "mysql", fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", user, passwd, host, port, dbname))
-	//orm.RunSyncdb("default", true, true)
+	//orm.RunSyncdb("default", false, true)
 }
 //自动建表
 func CreateTable() {

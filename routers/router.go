@@ -13,6 +13,7 @@ import (
 	"opms/controllers/overtimes"
 	"opms/controllers/projects"
 	"opms/controllers/resumes"
+	"opms/controllers/customers"
 	"opms/controllers/users"
 	"opms/controllers/notices"
 	"github.com/astaxie/beego"
@@ -134,7 +135,13 @@ func init() {
 	beego.Router("/resume/edit/:id", &resumes.EditResumeController{})
 	beego.Router("/resume/ajax/status", &resumes.AjaxStatusResumeController{})
 	beego.Router("/resume/ajax/delete", &resumes.AjaxDeleteResumeController{})
-
+	//客户管理
+	beego.Router("/customer/list", &customers.ManageCustomerController{})
+	beego.Router("/customer/add", &customers.AddCustomerController{})
+	beego.Router("/customer/edit/:id", &customers.EditCustomerController{})
+	beego.Router("/customer/ajax/status", &customers.AjaxStatusCustomerController{})
+	beego.Router("/customer/ajax/delete", &customers.AjaxDeleteCustomerController{})
+	
 	beego.Router("/kindeditor/upload", &albums.UploadKindController{})
 
 	//请假

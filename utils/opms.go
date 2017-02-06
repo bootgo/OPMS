@@ -300,6 +300,23 @@ func GetResumeStatus(status int) string {
 	return txt
 }
 
+func GetCustomerStatus(status int) string {
+	var txt string
+	switch status {
+	case 1:
+		txt = "正常"
+	case 2:
+		txt = "禁用"
+	case 3:
+		txt = "待评估"
+	case 4:
+		txt = "洽谈中"
+	case 5:
+		txt = "不可用"
+	}
+	return txt
+}
+
 func GetLeaveType(ltype int) string {
 	var txt string
 	switch ltype {

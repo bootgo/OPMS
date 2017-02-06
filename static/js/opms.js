@@ -992,12 +992,67 @@ $(function(){
 		},'json');
     });
 	
-	
-	
+
 	$('.js-customers-delete').on('click', function(){
     	var that = $(this);
     	var id = that.attr('data-id');
 		$.post('/customer/ajax/delete', { id: id },function(data){
+			dialogInfo(data.message)
+			if (data.code) {
+				that.parents('tr').remove();
+			} else {
+				
+			}
+			setTimeout(function(){ $('#dialogInfo').modal('hide'); }, 1000);
+		},'json');
+    });
+	
+	$('#vender-form').validate({
+        ignore:'',		    
+		rules : {
+			name:{required:true},
+			phone:{required:true,digits:true}
+        },
+        messages : {
+			name:{required:'请填写供应商名称'},
+			phone:{required:'请填写手机号',digits:'请输入正确的手机号'}
+        },
+        submitHandler:function(form) {
+            $(form).ajaxSubmit({
+                type:'POST',
+                dataType:'json',
+                success:function(data) {
+                    dialogInfo(data.message)
+                    if (data.code) {
+						setTimeout(function(){window.location.href='/vender/list';}, 2000);
+                    } else {
+                        setTimeout(function(){ $('#dialogInfo').modal('hide'); }, 1000);
+                    }					
+                }
+            });
+        }
+    });
+
+	$('.js-venders-single').on('click', function(){
+    	var that = $(this);
+    	var status = that.attr('data-status')
+    	var id = that.attr('data-id');
+		$.post('/vender/ajax/status', { status: status, id: id },function(data){
+			dialogInfo(data.message)
+			if (data.code) {
+				that.parents('td').prev('td').text(that.text());
+				//that.attr('data-status', status == 2 ? 1 : 2).text(status == 2 ? '正常' : '禁用').parents('td').prev('td').text(status == 2 ? '禁用' : '正常');
+			} else {
+				
+			}
+			setTimeout(function(){ $('#dialogInfo').modal('hide'); }, 1000);
+		},'json');
+    });
+	
+	$('.js-venders-delete').on('click', function(){
+    	var that = $(this);
+    	var id = that.attr('data-id');
+		$.post('/vender/ajax/delete', { id: id },function(data){
 			dialogInfo(data.message)
 			if (data.code) {
 				that.parents('tr').remove();

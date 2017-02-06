@@ -14,6 +14,7 @@ import (
 	"opms/controllers/projects"
 	"opms/controllers/resumes"
 	"opms/controllers/customers"
+	"opms/controllers/venders"
 	"opms/controllers/users"
 	"opms/controllers/notices"
 	"github.com/astaxie/beego"
@@ -71,6 +72,10 @@ func init() {
 	beego.Router("/project/team/:id", &projects.TeamProjectController{})
 	beego.Router("/team/ajax/delete", &projects.AjaxDeleteTeamProjectController{})
 	beego.Router("/team/add/:id", &projects.AddTeamProjectController{})
+	//项目客户
+	//beego.Router("/project/customer/:id", &projects.CustomerProjectController{})
+	//beego.Router("/project/customer/ajax/delete", &projects.AjaxDeleteCustomerProjectController{})
+	//beego.Router("/project/customer/add/:id", &projects.AddCustomerProjectController{})
 
 	//项目需求
 	beego.Router("/project/need/:id", &projects.NeedsProjectController{})
@@ -141,6 +146,13 @@ func init() {
 	beego.Router("/customer/edit/:id", &customers.EditCustomerController{})
 	beego.Router("/customer/ajax/status", &customers.AjaxStatusCustomerController{})
 	beego.Router("/customer/ajax/delete", &customers.AjaxDeleteCustomerController{})
+	
+	//客户管理
+	beego.Router("/vender/list", &venders.ManageVenderController{})
+	beego.Router("/vender/add", &venders.AddVenderController{})
+	beego.Router("/vender/edit/:id", &venders.EditVenderController{})
+	beego.Router("/vender/ajax/status", &venders.AjaxStatusVenderController{})
+	beego.Router("/vender/ajax/delete", &venders.AjaxDeleteVenderController{})
 	
 	beego.Router("/kindeditor/upload", &albums.UploadKindController{})
 

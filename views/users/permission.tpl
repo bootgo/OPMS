@@ -43,11 +43,11 @@
               <section id="unseen">
                 <form id="permission-form">
                   <ul class="list-unstyled">
-                    <li data-pmodel="项目管理-project-book||project-manage" class="border">
+                    <li data-pmodel="项目管理-project-book||#" class="border">
                       <h4>项目管理</h4>
                       <ul class="list-unstyled">
                         <li>
-                          <div class="form-group"> 项目：
+                          <div class="form-group" data-cmodel="项目管理-project||project-manage"> 项目：
                             <label class="checkbox-inline">
                             <input type="checkbox" name="permission[]" value="project-manage">
                             项目列表 </label>
@@ -59,6 +59,35 @@
                             编辑项目 </label>
                           </div>
                         </li>
+						<li>
+                          <div class="form-group" data-cmodel="客户管理-project||customer-list"> 客户管理：
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="customer-manage">
+                            客户列表 </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="customer-add">
+                            添加客户 </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="customer-edit">
+                            编辑客户 </label>
+							<label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="customer-delete">
+                            删除客户 </label>
+                          </div>
+					    </li>
+						<!--<li>
+                          <div class="form-group"> 客户：
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="project-customer">
+                            项目客户列表 </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="project-customer-add">
+                            添加项目客户 </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="project-customer-delete">
+                            删除项目客户 </label>
+                          </div>
+                        </li>-->
                         <li>
                           <div class="form-group"> 团队：
                             <label class="checkbox-inline">
@@ -407,11 +436,11 @@
                         </li>
                       </ul>
                     </li>
-                    <li data-pmodel="基础信息-baseinfo-tasks||#" class="border">
-                      <h4>基础信息</h4>
+                    <li data-pmodel="采购管理-vender-tasks||#" class="border">
+                      <h4>采购信息</h4>
                       <ul class="list-unstyled">
                         <li>
-                          <div class="form-group" data-cmodel="供应商-baseinfo||vender-list">供应商：
+                          <div class="form-group" data-cmodel="供应商-vender||vender-list">供应商：
                             <label class="checkbox-inline">
                             <input type="checkbox" name="permission[]" value="vender-manage">
                             供应商列表 </label>
@@ -426,21 +455,7 @@
                             删除供应商 </label>
                           </div>
                         </li>
-						<li>
-                          <div class="form-group" data-cmodel="客户-baseinfo||customer-list"> 客户管理：
-                            <label class="checkbox-inline">
-                            <input type="checkbox" name="permission[]" value="customer-manage">
-                            客户列表 </label>
-                            <label class="checkbox-inline">
-                            <input type="checkbox" name="permission[]" value="customer-add">
-                            添加客户 </label>
-                            <label class="checkbox-inline">
-                            <input type="checkbox" name="permission[]" value="customer-edit">
-                            编辑客户 </label>
-							<label class="checkbox-inline">
-                            <input type="checkbox" name="permission[]" value="customer-delete">
-                            删除客户 </label>
-                          </div>
+						
                         </li>
                       </ul>
                     </li>

@@ -57,7 +57,7 @@
                         <th>名称</th>
                         <th>别名</th>
 						<th>创建人</th>
-                        <th>负责人</th>
+                        <th>客户</th>
                         <th>结束时间</th>
                         <th>状态</th>
                         <th>操作</th>
@@ -70,7 +70,7 @@
                       <td><a href="/project/{{$v.Id}}">{{$v.Name}}</a></td>
                       <td>{{$v.Aliasname}}</td>
 					  <td><a href="/user/show/{{$v.Userid}}">{{getRealname $v.Userid}}</a></td>
-                      <td><a href="/user/show/{{$v.Projuserid}}">{{getRealname $v.Projuserid}}</a></td>
+                      <td><a href="/customer/list/{{$v.Customerid}}">{{getCustomerName $v.Customerid}}</a></td>
                       <td>{{getDate $v.Ended}}</td>
                       <td>{{if eq 1 $v.Status}}挂起{{else if eq 2 $v.Status}}延期{{else if eq 3 $v.Status}}进行{{else if eq 4 $v.Status}}结束{{end}}</td>
                       <td><div class="btn-group">

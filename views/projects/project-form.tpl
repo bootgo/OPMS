@@ -45,6 +45,17 @@
                     <input type="text" name="aliasname" value="{{.project.Aliasname}}" class="form-control" placeholder="取个代号">
                   </div>
                 </div>
+				<div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">客户</label>
+                  <div class="col-sm-10">
+                    <select name="customerid" class="form-control">
+                      <option>请选择客户</option>
+					{{range .customers}}
+                      <option value="{{.Id}}" >{{getCustomerName .Id}}</option>
+                    {{end}}
+                    </select>
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">开始和结束日期</label>
                   <div class="col-sm-10">
@@ -61,6 +72,7 @@
                     <textarea name="desc" placeholder="请填写描述" style="height:300px;" class="form-control">{{.project.Desc}}</textarea>
                   </div>
                 </div>
+				<!--
 				{{if .project.Id}}
 				<div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">项目负责人</label>
@@ -94,7 +106,7 @@
                     {{end}}
                     </select>
                   </div>
-                </div>
+                </div> 
 				<div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">发布负责人</label>
                   <div class="col-sm-10">
@@ -106,7 +118,7 @@
                     </select>
                   </div>
                 </div>
-				{{end}}
+				{{end}} -->
                 <div class="form-group">
                   <label class="col-lg-2 col-sm-2 control-label"></label>
                   <div class="col-lg-10">

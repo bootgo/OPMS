@@ -1,9 +1,9 @@
 package customers
 
 import (
-	//"fmt"
+	"fmt"
 	"opms/models"
-	//"opms/utils"
+	"opms/utils"
 	"time"
 
 	"github.com/astaxie/beego"
@@ -167,4 +167,20 @@ func DeleteCustomer(id int64) error {
 	o := orm.NewOrm()
 	_, err := o.Delete(&Customers{Id: id})
 	return err
+}
+
+func GetCustomerName(id int64) string {
+	var err error
+	var name string
+
+	err = utils.GetCache("GetCustomerName.id."+fmt.Sprintf("%d", id), &name)
+	if err != nil {
+		cache_expire, _ := beego.AppConfig.Int("cache_expire")
+		var customer Customers
+		o := orm.NewOrm()
+		o.QueryTable(models.TableName("customers")).Filter("customerid", id).One(&customer, "name")
+		name = customer.Name
+		utils.SetCache("GetCustomerName.id."+fmt.Sprintf("%d", id), name, cache_expire)
+	}
+	return name
 }

@@ -24,6 +24,7 @@ type Projects struct {
 	Produserid int64
 	Testuserid int64
 	Publuserid int64
+	Customerid int64
 }
 
 func (this *Projects) TableName() string {
@@ -77,8 +78,9 @@ func UpdateProject(id int64, updPro Projects) error {
 	pro.Produserid = updPro.Produserid
 	pro.Testuserid = updPro.Testuserid
 	pro.Publuserid = updPro.Publuserid
+	pro.Customerid = updPro.Customerid
 	//pro.Status = updPro.Status
-	_, err := o.Update(&pro, "name", "aliasname", "started", "ended", "desc", "projuserid", "produserid", "testuserid", "publuserid")
+	_, err := o.Update(&pro, "name", "aliasname", "started", "ended", "desc", "projuserid", "produserid", "testuserid", "publuserid","customerid")
 	return err
 }
 
@@ -93,6 +95,7 @@ func AddProject(updPro Projects) error {
 	pro.Started = updPro.Started
 	pro.Ended = updPro.Ended
 	pro.Desc = updPro.Desc
+	pro.Customerid = updPro.Customerid
 	pro.Created = time.Now().Unix()
 	pro.Status = 1
 	_, err := o.Insert(pro)

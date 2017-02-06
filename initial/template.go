@@ -9,7 +9,8 @@ import (
 	"opms/models/oagoods"
 	"opms/models/overtimes"
 	"opms/models/projects"
-	"opms/models/users"
+	"opms/models/users"	
+	"opms/models/customers"
 	"opms/utils"
 	//"time"
 
@@ -18,6 +19,7 @@ import (
 
 func InitTemplate() {
 	beego.AddFuncMap("getRealname", users.GetRealname)
+	beego.AddFuncMap("getCustomerName", customers.GetCustomerName)
 	beego.AddFuncMap("getNeedsname", projects.GetProjectNeedsName)
 	beego.AddFuncMap("getProjectname", projects.GetProjectName)
 	beego.AddFuncMap("getLeaveProcess", leaves.ListLeaveApproverProcessHtml)
@@ -49,6 +51,7 @@ func InitTemplate() {
 	beego.AddFuncMap("getWorkYear", utils.GetWorkYear)
 	beego.AddFuncMap("getResumeStatus", utils.GetResumeStatus)
 	beego.AddFuncMap("getCustomerStatus", utils.GetCustomerStatus)
+	beego.AddFuncMap("getVenderStatus", utils.GetVenderStatus)
 	beego.AddFuncMap("getCheckworkType", utils.GetCheckworkType)
 
 	beego.AddFuncMap("getMessageType", utils.GetMessageType)

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"opms/controllers"
 	. "opms/models/projects"
+	. "opms/models/customers"
 	"opms/utils"
 	"strconv"
 	"strings"
@@ -111,6 +112,12 @@ func (this *AddProjectController) Get() {
 	var project Projects
 	project.Started = time.Now().Unix()
 	project.Ended = time.Now().Unix()
+	//_, _, customers := ListProjectCustomers(project.Id, 1, 100)
+	condArr := make(map[string]string)
+	condArr["status"] = "1"
+
+	_, _, customers := ListCustomers(condArr, 1, 9)
+	this.Data["customers"] = customers
 	this.Data["project"] = project
 	this.TplName = "projects/project-form.tpl"
 }
@@ -156,7 +163,7 @@ func (this *AddProjectController) Post() {
 		this.ServeJSON()
 		return
 	}
-
+	customerid, _ := this.GetInt64("customerid")
 	userid := this.BaseController.UserUserId
 
 	var err error
@@ -171,7 +178,7 @@ func (this *AddProjectController) Post() {
 	pro.Started = startedtime
 	pro.Ended = endedtime
 	pro.Desc = desc
-
+	pro.Customerid = customerid
 	err = AddProject(pro)
 
 	if err == nil {
@@ -197,8 +204,12 @@ func (this *EditProjectController) Get() {
 	if err != nil {
 		this.Redirect("/404.html", 302)
 	}
-	_, _, teams := ListProjectTeam(project.Id, 1, 100)
-	this.Data["teams"] = teams
+	//_, _, teams := ListProjectTeam(project.Id, 1, 100)
+	condArr := make(map[string]string)
+	condArr["status"] = "1"
+
+	_, _, customers := ListCustomers(condArr, 1, 9)
+	this.Data["customers"] = customers
 	this.Data["project"] = project
 	this.TplName = "projects/project-form.tpl"
 }
@@ -260,6 +271,7 @@ func (this *EditProjectController) Post() {
 	produserid, _ := this.GetInt64("produserid")
 	testuserid, _ := this.GetInt64("testuserid")
 	publuserid, _ := this.GetInt64("publuserid")
+	customerid, _ := this.GetInt64("customerid")
 
 	var pro Projects
 	pro.Name = name
@@ -271,6 +283,7 @@ func (this *EditProjectController) Post() {
 	pro.Produserid = produserid
 	pro.Testuserid = testuserid
 	pro.Publuserid = publuserid
+	pro.Customerid = customerid
 
 	err = UpdateProject(id, pro)
 

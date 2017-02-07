@@ -72,10 +72,17 @@ func init() {
 	beego.Router("/project/team/:id", &projects.TeamProjectController{})
 	beego.Router("/team/ajax/delete", &projects.AjaxDeleteTeamProjectController{})
 	beego.Router("/team/add/:id", &projects.AddTeamProjectController{})
+	
 	//项目客户
 	//beego.Router("/project/customer/:id", &projects.CustomerProjectController{})
 	//beego.Router("/project/customer/ajax/delete", &projects.AjaxDeleteCustomerProjectController{})
 	//beego.Router("/project/customer/add/:id", &projects.AddCustomerProjectController{})
+
+	//项目角色
+	beego.Router("/projectsroles/manage", &projects.ManageProjectsRolesController{})
+	beego.Router("/projectsroles/ajax/status", &projects.AjaxStatusProjectsRolesController{})
+	beego.Router("/projectsroles/edit/:id", &projects.EditProjectsRolesController{})
+	beego.Router("/projectsroles/add", &projects.AddProjectsRolesController{})
 
 	//项目需求
 	beego.Router("/project/need/:id", &projects.NeedsProjectController{})

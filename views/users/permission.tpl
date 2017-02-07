@@ -70,11 +70,27 @@
                             <label class="checkbox-inline">
                             <input type="checkbox" name="permission[]" value="customer-edit">
                             编辑客户 </label>
-							<label class="checkbox-inline">
+							              <label class="checkbox-inline">
                             <input type="checkbox" name="permission[]" value="customer-delete">
                             删除客户 </label>
                           </div>
 					    </li>
+              <li>
+                          <div class="form-group" data-cmodel="项目角色管理-project||projectsroles-manage"> 项目角色管理：
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="projectsroles-manage">
+                            项目角色列表 </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="projectsroles-add">
+                            添加项目角色 </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="projectsroles-edit">
+                            编辑项目角色 </label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" name="permission[]" value="projectsroles-delete">
+                            删除项目角色 </label>
+                          </div>
+              </li>
 						<!--<li>
                           <div class="form-group"> 客户：
                             <label class="checkbox-inline">

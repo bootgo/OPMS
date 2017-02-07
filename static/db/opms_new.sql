@@ -3597,6 +3597,19 @@ INSERT INTO `pms_users_profile` VALUES (1461312703628858832,'李白',1,'1985-12-
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+DROP TABLE IF EXISTS `pms_projects_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pms_projects_roles` (
+  `projectsrolesid` bigint(20) NOT NULL COMMENT '项目角色ID',
+  `name` varchar(30) DEFAULT NULL COMMENT '名称',
+  `desc` varchar(255) DEFAULT NULL COMMENT '描述',
+  `status` tinyint(1) DEFAULT '1' COMMENT '1正常2屏蔽',
+  PRIMARY KEY (`projectsrolesid`),
+  KEY `INDEX_NS` (`name`,`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='项目角色表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

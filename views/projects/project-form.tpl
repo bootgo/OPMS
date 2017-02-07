@@ -51,7 +51,7 @@
                     <select name="customerid" class="form-control">
                       <option>请选择客户</option>
 					{{range .customers}}
-                      <option value="{{.Id}}" >{{getCustomerName .Id}}</option>
+                      <option value="{{.Id}}" {{if eq .Id $.project.Customerid}}selected{{end}}>{{getCustomerName .Id}}</option>
                     {{end}}
                     </select>
                   </div>
